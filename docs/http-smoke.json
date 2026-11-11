@@ -1,0 +1,30 @@
+{
+  "/health": {
+    "status": 200,
+    "items": 0
+  },
+  "/recommendations/1?category=chalet": {
+    "status": 200,
+    "items": 10
+  },
+  "/recommendations/0?category=scuba&city=Doha": {
+    "status": 200,
+    "items": 10
+  },
+  "/recommendations/1?category=chalet&recent_listing_ids=1,12": {
+    "status": 200,
+    "items": 10
+  },
+  "/similar/1": {
+    "status": 200,
+    "items": 10
+  },
+  "/popular?category=restaurant&city=Dubai": {
+    "status": 200,
+    "items": 10
+  },
+  "/openapi.json": {
+    "status": 200,
+    "items": 0
+  }
+}

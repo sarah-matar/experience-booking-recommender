@@ -1,0 +1,21 @@
+name: quality
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements-bootstrap.txt pip==24.0
+      - run: python -m pip install --no-build-isolation --no-use-pep517 lightfm==1.17
+      - run: python -m pip install --no-build-isolation -r requirements.lock -e '.[dev]'
+      - run: make lint test
+  container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t experience-reco:ci .

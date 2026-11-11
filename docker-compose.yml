@@ -1,0 +1,31 @@
+services:
+  # The explicit setup profile only generates a NEW empty volume, never deletes a dataset.
+  seed:
+    build: .
+    image: experience-reco:local
+    profiles: [setup]
+    command: ["experience-reco", "generate"]
+    volumes:
+      - marketplace-data:/app/data
+    healthcheck:
+      disable: true
+  batch:
+    build: .
+    image: experience-reco:local
+    profiles: [jobs]
+    command: ["experience-reco", "batch", "--report-dir", "/app/artifacts"]
+    volumes:
+      - marketplace-data:/app/data
+      - reports:/app/artifacts
+    healthcheck:
+      disable: true
+  api:
+    build: .
+    image: experience-reco:local
+    ports: ["127.0.0.1:8000:8000"]
+    volumes:
+      - marketplace-data:/app/data
+    restart: unless-stopped
+volumes:
+  marketplace-data:
+  reports:

@@ -12,8 +12,8 @@ authors = [{name = "Rabih Andari"}]
 license = {text = "MIT"}
 dependencies = [
   "numpy==1.26.4", "scipy==1.13.1", "lightfm==1.17",
-  "SQLAlchemy==2.0.36", "fastapi==0.115.6", "uvicorn==0.34.0",
-  "matplotlib==3.9.4",
+  "SQLAlchemy==2.0.36", "fastapi==0.162.4", "uvicorn==0.34.0",
+  "matplotlib==3.11.2",
 ]
 
 [project.optional-dependencies]

@@ -1,0 +1,99 @@
+{
+  "user_id": 1,
+  "category": "chalet",
+  "source": "hybrid",
+  "session_boost_applied": false,
+  "model_version": "20261111T191559-2f3a6d",
+  "items": [
+    {
+      "listing_id": 3,
+      "title": "Doha Chalet 003",
+      "city": "Doha",
+      "price": 117.0,
+      "currency": "USD",
+      "score": 1.0,
+      "reason": "hybrid_personalized"
+    },
+    {
+      "listing_id": 88,
+      "title": "Doha Chalet 088",
+      "city": "Doha",
+      "price": 117.0,
+      "currency": "USD",
+      "score": 0.952381,
+      "reason": "hybrid_personalized"
+    },
+    {
+      "listing_id": 90,
+      "title": "Muscat Chalet 090",
+      "city": "Muscat",
+      "price": 117.0,
+      "currency": "USD",
+      "score": 0.909091,
+      "reason": "hybrid_personalized"
+    },
+    {
+      "listing_id": 38,
+      "title": "Doha Chalet 038",
+      "city": "Doha",
+      "price": 324.0,
+      "currency": "USD",
+      "score": 0.869565,
+      "reason": "hybrid_personalized"
+    },
+    {
+      "listing_id": 63,
+      "title": "Doha Chalet 063",
+      "city": "Doha",
+      "price": 324.0,
+      "currency": "USD",
+      "score": 0.833333,
+      "reason": "hybrid_personalized"
+    },
+    {
+      "listing_id": 66,
+      "title": "Kuwait City Chalet 066",
+      "city": "Kuwait City",
+      "price": 324.0,
+      "currency": "USD",
+      "score": 0.8,
+      "reason": "hybrid_personalized"
+    },
+    {
+      "listing_id": 15,
+      "title": "Muscat Chalet 015",
+      "city": "Muscat",
+      "price": 180.0,
+      "currency": "USD",
+      "score": 0.769231,
+      "reason": "hybrid_personalized"
+    },
+    {
+      "listing_id": 20,
+      "title": "Muscat Chalet 020",
+      "city": "Muscat",
+      "price": 117.0,
+      "currency": "USD",
+      "score": 0.740741,
+      "reason": "hybrid_personalized"
+    },
+    {
+      "listing_id": 37,
+      "title": "Dubai Chalet 037",
+      "city": "Dubai",
+      "price": 324.0,
+      "currency": "USD",
+      "score": 0.714286,
+      "reason": "hybrid_personalized"
+    },
+    {
+      "listing_id": 35,
+      "title": "Muscat Chalet 035",
+      "city": "Muscat",
+      "price": 180.0,
+      "currency": "USD",
+      "score": 0.689655,
+      "reason": "hybrid_personalized"
+    }
+  ]
+}

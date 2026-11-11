@@ -1,0 +1,164 @@
+{
+  "model_version": "20261111T191559-2f3a6d",
+  "seed": 42,
+  "epochs": 45,
+  "algorithm": "LightFM 1.17 WARP hybrid",
+  "k": 10,
+  "split_at_utc": "2026-04-03T20:48:14",
+  "evaluation": "global last-30-days holdout; unseen full-catalog ranking; warm users",
+  "dataset": {
+    "users": 360,
+    "listings": 800,
+    "interactions": 85445
+  },
+  "categories": [
+    {
+      "category": "chalet",
+      "catalog_size": 100,
+      "train_events": 8166,
+      "test_events": 2458,
+      "evaluated_users": 347,
+      "lightfm": {
+        "precision@10": 0.21037463976945245,
+        "recall@10": 0.33624995721537504,
+        "ndcg@10": 0.3245604143156517
+      },
+      "popularity": {
+        "precision@10": 0.176657060518732,
+        "recall@10": 0.2886770450171026,
+        "ndcg@10": 0.2397939892400441
+      }
+    },
+    {
+      "category": "farm",
+      "catalog_size": 100,
+      "train_events": 8215,
+      "test_events": 2523,
+      "evaluated_users": 348,
+      "lightfm": {
+        "precision@10": 0.21695402298850575,
+        "recall@10": 0.33564883392469597,
+        "ndcg@10": 0.32640841883936983
+      },
+      "popularity": {
+        "precision@10": 0.17614942528735633,
+        "recall@10": 0.2859224268707027,
+        "ndcg@10": 0.2377659866310776
+      }
+    },
+    {
+      "category": "desert_tent",
+      "catalog_size": 100,
+      "train_events": 8173,
+      "test_events": 2460,
+      "evaluated_users": 348,
+      "lightfm": {
+        "precision@10": 0.228448275862069,
+        "recall@10": 0.3727607073829183,
+        "ndcg@10": 0.37472913773427907
+      },
+      "popularity": {
+        "precision@10": 0.18620689655172418,
+        "recall@10": 0.3013824739230419,
+        "ndcg@10": 0.2562053144441845
+      }
+    },
+    {
+      "category": "atv",
+      "catalog_size": 100,
+      "train_events": 8320,
+      "test_events": 2404,
+      "evaluated_users": 348,
+      "lightfm": {
+        "precision@10": 0.22270114942528735,
+        "recall@10": 0.3719716665837356,
+        "ndcg@10": 0.35870680212712136
+      },
+      "popularity": {
+        "precision@10": 0.19425287356321838,
+        "recall@10": 0.3203692300675059,
+        "ndcg@10": 0.2627758879944789
+      }
+    },
+    {
+      "category": "skydiving",
+      "catalog_size": 100,
+      "train_events": 8348,
+      "test_events": 2418,
+      "evaluated_users": 345,
+      "lightfm": {
+        "precision@10": 0.20463768115942027,
+        "recall@10": 0.3321564747651704,
+        "ndcg@10": 0.32469784450769285
+      },
+      "popularity": {
+        "precision@10": 0.18724637681159423,
+        "recall@10": 0.3165188354318789,
+        "ndcg@10": 0.2584284034297922
+      }
+    },
+    {
+      "category": "scuba",
+      "catalog_size": 100,
+      "train_events": 8166,
+      "test_events": 2472,
+      "evaluated_users": 348,
+      "lightfm": {
+        "precision@10": 0.2290229885057471,
+        "recall@10": 0.3617139007225214,
+        "ndcg@10": 0.36326223416888664
+      },
+      "popularity": {
+        "precision@10": 0.19080459770114944,
+        "recall@10": 0.296814360607464,
+        "ndcg@10": 0.24785891188994646
+      }
+    },
+    {
+      "category": "restaurant",
+      "catalog_size": 100,
+      "train_events": 8178,
+      "test_events": 2484,
+      "evaluated_users": 348,
+      "lightfm": {
+        "precision@10": 0.2129310344827586,
+        "recall@10": 0.34332541660127863,
+        "ndcg@10": 0.3321646291290047
+      },
+      "popularity": {
+        "precision@10": 0.19568965517241377,
+        "recall@10": 0.31569073487176935,
+        "ndcg@10": 0.25736065850400186
+      }
+    },
+    {
+      "category": "market_product",
+      "catalog_size": 100,
+      "train_events": 8210,
+      "test_events": 2450,
+      "evaluated_users": 347,
+      "lightfm": {
+        "precision@10": 0.22247838616714694,
+        "recall@10": 0.3644804363104075,
+        "ndcg@10": 0.35171365953032085
+      },
+      "popularity": {
+        "precision@10": 0.18904899135446687,
+        "recall@10": 0.306257095450179,
+        "ndcg@10": 0.2624338827216744
+      }
+    }
+  ],
+  "macro": {
+    "lightfm": {
+      "precision@10": 0.21844352229504843,
+      "recall@10": 0.3522884241882629,
+      "ndcg@10": 0.3445303925440409
+    },
+    "popularity": {
+      "precision@10": 0.18700698462008192,
+      "recall@10": 0.3039540252799555,
+      "ndcg@10": 0.2528278793569
+    }
+  }
+}
