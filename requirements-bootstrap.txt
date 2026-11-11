@@ -1,0 +1,5 @@
+# Install before LightFM's legacy build; NumPy 2 is intentionally avoided.
+numpy==1.26.4
+scipy==1.13.1
+setuptools==70.3.0
+wheel==0.45.1

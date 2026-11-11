@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools==70.3.0", "wheel==0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "experience-reco"
+version = "1.0.0"
+description = "Category-scoped hybrid recommendations for an entirely synthetic experience marketplace"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+authors = [{name = "Rabih Andari"}]
+license = {text = "MIT"}
+dependencies = [
+  "numpy==1.26.4", "scipy==1.13.1", "lightfm==1.17",
+  "SQLAlchemy==2.0.36", "fastapi==0.115.6", "uvicorn==0.34.0",
+  "matplotlib==3.9.4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.4", "httpx==0.28.1", "ruff==0.9.10"]
+sqlserver = ["pyodbc>=5.2,<6"]
+
+[project.scripts]
+experience-reco = "experience_reco.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
