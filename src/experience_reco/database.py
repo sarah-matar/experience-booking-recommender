@@ -12,6 +12,7 @@ from sqlalchemy import (
     Float,
     ForeignKey,
     Integer,
+    Index,
     MetaData,
     String,
     Table,
@@ -146,6 +147,10 @@ model_runs = Table(
     Column("TrainedAt", DateTime),
     schema="reco",
 )
+
+
+Index("IX_Interactions_User_CreatedAt", interactions.c.UserId, interactions.c.CreatedAt)
+Index("IX_Listings_Category_Active", listings.c.CategoryId, listings.c.IsActive)
 
 
 def get_engine(url: str | None = None) -> Engine:

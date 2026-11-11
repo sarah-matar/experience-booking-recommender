@@ -153,10 +153,12 @@ class RecommendationStore:
             )
             # Local fallback first, then category-wide backfill; never leak across explicit city filter.
             fallback.sort(key=lambda r: (r["City"] != (preferred_city or ""), r["Rank"]))
+            fallback_rank = 0
             for r in fallback:
                 lid = r["ListingId"]
                 if lid in pool and lid not in excluded and lid not in base:
-                    base[lid] = (1.0 if not batch else 0.15) / (1 + 0.05 * (r["Rank"] - 1))
+                    fallback_rank += 1
+                    base[lid] = (1.0 if not batch else 0.15) / (1 + 0.05 * (fallback_rank - 1))
                     reasons[lid] = "popular_near_you"
             session = {}
             # Last ID is most recent. Discard IDs from other categories or invalid IDs.

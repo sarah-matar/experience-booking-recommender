@@ -110,3 +110,57 @@ def test_invalid_generator_size_has_no_side_effect(tmp_path):
 
     assert not inspect(engine).has_table("Users")
     engine.dispose()
+
+
+def test_failed_publish_preserves_previous_complete_snapshot(trained, tmp_path):
+    from sqlalchemy import event
+    from experience_reco.training import train_and_publish
+
+    engine = trained[0]
+    tables = (db.user_recommendations, db.similar_listings, db.popular_listings, db.model_runs)
+    with engine.connect() as conn:
+        before = {table.name: conn.execute(select(table)).all() for table in tables}
+
+    def fail_mid_publication(conn, cursor, statement, parameters, context, executemany):
+        if statement.lstrip().startswith("INSERT INTO") and '"SimilarListings"' in statement:
+            raise RuntimeError("Simulated storage failure")
+
+    event.listen(engine, "before_cursor_execute", fail_mid_publication)
+    try:
+        with pytest.raises(RuntimeError, match="Simulated storage failure"):
+            train_and_publish(engine, epochs=1, seed=17, report_dir=tmp_path / "failed")
+    finally:
+        event.remove(engine, "before_cursor_execute", fail_mid_publication)
+    with engine.connect() as conn:
+        after = {table.name: conn.execute(select(table)).all() for table in tables}
+    assert before == after
+
+
+def test_daytime_event_removed_without_retraining(trained):
+    from datetime import timezone
+    from sqlalchemy import delete, insert
+    from experience_reco.serving import RecommendationStore
+
+    engine = trained[0]
+    store = RecommendationStore(engine)
+    category = store.category("chalet")
+    picks = store.recommend(1, category, [], None, 10)["items"]
+    assert picks
+    lid = picks[0]["listing_id"]
+    with engine.begin() as conn:
+        row = conn.execute(
+            insert(db.interactions).values(
+                UserId=1,
+                ListingId=lid,
+                Signal="click",
+                Weight=1.0,
+                CreatedAt=datetime.now(timezone.utc).replace(tzinfo=None),
+            )
+        )
+        event_id = row.inserted_primary_key[0]
+    try:
+        refreshed = store.recommend(1, category, [], None, 10)["items"]
+        assert lid not in {item["listing_id"] for item in refreshed}
+    finally:
+        with engine.begin() as conn:
+            conn.execute(delete(db.interactions).where(db.interactions.c.InteractionId == event_id))

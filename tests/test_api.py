@@ -125,3 +125,18 @@ def test_errors_and_limits(client):
         assert client.get(f"/recommendations/1?category=chalet&{query}").status_code == 422
     assert client.get("/recommendations/-1?category=chalet").status_code == 422
     assert client.get("/recommendations/1").status_code == 422
+
+
+def test_implicit_home_city_popularity_precedes_global_backfill(client, trained):
+    with trained[0].connect() as conn:
+        city = conn.scalar(select(db.users.c.City).where(db.users.c.UserId == 30))
+        local_ids = set(
+            conn.execute(
+                select(db.listings.c.ListingId).where(
+                    db.listings.c.CategoryId == 1, db.listings.c.City == city
+                )
+            ).scalars()
+        )
+    payload = client.get("/recommendations/30?category=chalet").json()
+    assert payload["source"] == "popularity"
+    assert all(item["listing_id"] in local_ids for item in payload["items"][: len(local_ids)])
