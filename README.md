@@ -10,7 +10,7 @@ Python 3.11 · LightFM hybrid · FastAPI · SQLAlchemy · SQL Server reference �
 
 </div>
 
-An independent portfolio project by **Rabih Andari**. Every user, listing, vendor,
+An independent portfolio project by **Sarah Matar**. Every user, listing, vendor,
 search, and interaction is synthetic. No private code, customer data, or external
 business branding is included.
 
